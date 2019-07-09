@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"><!--引入thymeleaf-->
+<head>
+    <meta charset="UTF-8" />
+    <title>添加区域</title></head>
+<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+<body>
+<h2 style="color:green;text-align: center;">添加区域</h2>
+<p th:text="${msg}">msg Error</p><p th:text="${success}">successs Error</p>
+<form class="form-horizontal" role="form" action="#" th:action="@{/addArea}" th:object="${area}" method="post">
+    <div class="form-group">
+        <label for="name" class="col-sm-2 control-label">
+            区域名称：
+        </label>
+        <div class="col-sm-8">
+            <input type="text" th:field="*{areaName}" class="form-control" id="areaName" placeholder="输入区域名称">
+        </div>
+
+        <label class="col-sm-2" style="color:red" th:if="${#fields.hasErrors('areaName')}" th:errors="*{areaName}">
+            区域名称错误
+        </label>
+    </div>
+
+    <div class="form-group">
+        <label for="priority" class="col-sm-2 control-label">
+            优先级
+        </label>
+
+        <div class="col-sm-8">
+            <input type="text" th:field="*{priority}" class="form-control" id="priority" placeholder="输入优先级">
+        </div>
+
+        <label class="col-sm-2" style="color:red" th:if="${#fields.hasErrors('priority')}" th:errors="*{priority}">
+            优先级错误
+        </label>
+    </div>
+
+    <div class="form-group">
+        <div class="col-sm-12" style="text-align: center">
+            <button type="submit" class="btn btn-primary" id="btn">Submit</button>
+            <input type="reset" class="btn btn-warning" value="Reset"/>
+        </div>
+    </div>
+</form>
+</body>
+</html>
